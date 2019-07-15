@@ -1,1 +1,57 @@
- 
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Idea Box</title>
+ 	<link rel="stylesheet" type="text/css" href="normalize.css">
+ 	<link rel="stylesheet" type="text/css" href="style.css">
+ 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+ <body>
+ 	<aside>
+ 		<h1>IdeaBox Redux</h1>
+ 		<hr>
+ 		<h3>Filter Starred Ideas</h3>
+ 		<button type="button" class="aside__btn">Show Starred Ideas</button>
+ 		<hr>
+ 		<h3>Filter by Quality</h3>
+ 		<ul>
+ 			<li>Swill</li>
+ 			<li>Plausible</li>
+ 			<li>Genius</li>
+ 		</ul>
+ 		<h3>New Quality</h3>
+ 		<input type="text" class="aside__input">
+ 		<button type="button" class="aside__btn">Add New Quality</button>
+ 		<hr>
+ 	</aside>
+ 	<header>
+ 		<form>
+ 			<label>Title</label>
+ 			<input type="text" class="form__input--title">
+ 			<label>Body</label>
+ 			<input type="text" class="form__input--body">
+ 			<button type="button" class="form__btn">Save</button>
+ 			<img src="idea-box-images/search.svg" class="form__img" alt="search magnify glass button">
+ 			<input type="text" class="form__input--search" placeholder="Search ideas">
+ 		</form>
+ 		<main>
+ 			<article>
+ 				<section>
+ 				  <img src="idea-box-images/star.svg" alt="small star icon">
+ 				  <img src="idea-box-images/delete.svg" alt="X delete button">
+ 				</section>
+ 				  <h2 class="">Idea title</h2>
+ 				  <p class="">Idea body.</p>
+ 				<section>
+ 				  <img src="idea-box-images/upvote.svg" alt="round upvote icon">
+ 				  <h3>Quality: Swill</h3>
+ 				  <img src="idea-box-images/downvote.svg" alt="round downvote icon">	
+ 				</section>	  
+ 			</article>
+ 		</main>
+ 	</header>
+ </body>
+ <script type="text/javascript" scr="main.js"></script>
+ <script type="text/javascript" scr="idea.js"></script>
+ </html>
