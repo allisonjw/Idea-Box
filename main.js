@@ -11,6 +11,7 @@ var cardMain = document.querySelector('main');
 saveBtn.addEventListener('click', function(e) {
     e.preventDefault();
     generateIdeaCard();
+    hideCard();
 });
 
 
@@ -38,9 +39,9 @@ function createIdea() {
 
 }
 
-// function hideCard() {
-//  paragraph.visibility = false;
-// }
+function hideCard() {
+ paragraph.hidden = true;
+}
 
 function generateIdeaCard() {
  cardMain.insertAdjacentHTML ('afterbegin', 
