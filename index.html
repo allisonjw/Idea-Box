@@ -32,25 +32,31 @@
  			<label>Body</label>
  			<input type="text" class="form__input--body">
  			<button type="button" class="form__btn">Save</button>
- 			<img src="idea-box-images/search.svg" class="form__img" alt="search magnify glass button">
- 			<input type="text" class="form__input--search" placeholder="Search ideas">
+      <div class="form__search--container">
+        <div class="form__img--bkgd">
+     			<img src="idea-box-images/search.svg" class="form__img" alt="search magnify glass button">
+        </div>
+   			<input type="text" class="form__input--search" placeholder="Search ideas">
+      </div>
  		</form>
+    </header>
  		<main>
  			<article>
- 				<section>
+ 				<section class="article__section--header">
  				  <img src="idea-box-images/star.svg" alt="small star icon">
  				  <img src="idea-box-images/delete.svg" alt="X delete button">
  				</section>
+        <section class="article__section--body">
  				  <h2 class="">Idea title</h2>
- 				  <p class="">Idea body.</p>
- 				<section>
+ 				  <p class="">Idea body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
+        </section>
+ 				<section class="article__section--footer">
  				  <img src="idea-box-images/upvote.svg" alt="round upvote icon">
- 				  <h3>Quality: Swill</h3>
- 				  <img src="idea-box-images/downvote.svg" alt="round downvote icon">	
- 				</section>	  
+ 				  <h3 class="article__section--h3">Quality: Swill</h3>
+ 				  <img src="idea-box-images/downvote.svg" alt="round downvote icon">
+ 				</section>
  			</article>
  		</main>
- 	</header>
  </body>
  <script type="text/javascript" scr="main.js"></script>
  <script type="text/javascript" scr="idea.js"></script>
