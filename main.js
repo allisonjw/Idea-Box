@@ -14,28 +14,22 @@ saveBtn.addEventListener('click', function(e) {
     hideCard();
 });
 
-
-
-
-
-
-
                 // *******PHASE ONE*******
 
 // ****VIEWING AND ADDING NEW IDEA****
 // 1.idea cards should appear in descending chronological order (most recent idea at the top left of main)
 // 2.Save btn disabled if either title or body input is blank
-// 3.On click on save btn 
-// 	 3.a idea card is created with title/body. 
+// 3.On click on save btn
+// 	 3.a idea card is created with title/body.
 //   3.b Input fields should be cleared and ready for new idea
 //   3.c page SHOULD NOT reload
-//   3.d idea should be persisted. It should still be present upon reloading the page. 
+//   3.d idea should be persisted. It should still be present upon reloading the page.
 
-function handleSave() {
+function createIdea() {
 
 }
 
-function createIdea() {
+function handleSave() {
 
 }
 
@@ -44,15 +38,15 @@ function hideCard() {
 }
 
 function generateIdeaCard() {
- cardMain.insertAdjacentHTML ('afterbegin', 
+ cardMain.insertAdjacentHTML ('afterbegin',
  `<article>
   <section class="article__section--header">
     <img src="idea-box-images/star.svg" alt="small star icon">
     <img src="idea-box-images/delete.svg" alt="X delete button">
   </section>
 <section class="article__section--body">
-    <h2 class="">Idea title</h2>
-    <p class="">Idea body. Dont ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
+    <h2 class="article__section--h2" contentEditable="true">${titleInput.value}</h2>
+    <p class="article__section--p" contentEditable="true">${bodyInput.value}</p>
 </section>
   <section class="article__section--footer">
     <img src="idea-box-images/upvote.svg" alt="round upvote icon">
@@ -92,7 +86,7 @@ function updateCard() {
 
 		        // *******PHASE TWO*******
 
-// ****CHANGE QUALITY OF IDEA****	
+// ****CHANGE QUALITY OF IDEA****
 // 1.all ideas start out as 'Swill'
 //   1.a upvote and downvote should be buttons
 //   1.b Clicking upvote should increase its quality one notch (“swill” → “plausible”, “plausible” → “genius”)
@@ -110,13 +104,11 @@ function changeQuality() {
 
 // ****FILTER AND SEARCH BY TEXT****
 // 3. Upon searching
-//   3.a As user types (keyup) in search, the list of ideas should filter in real time to only display ideas whose title or body includ. 
+//   3.a As user types (keyup) in search, the list of ideas should filter in real time to only display ideas whose title or body includ.
 //   3.b The page SHOULD NOT reload.
 //   3.c Clearing the search box should restore all the idea cards to the list
 //   3.d doesnt need to persist. Not changed to idea.js needed
-		
+
 function handleSearch() {
 
 }
-
-
