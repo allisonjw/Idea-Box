@@ -1,5 +1,9 @@
 var ideasArray = [];
-
+var titleInput = document.querySelector('.form__input--title');
+var bodyInput = document.querySelector('.form__input--body');
+var saveBtn = document.querySelector('.form__btn');
+var searchInput = document.querySelector('.form__input--search');
+var cardsMain = document.querySelector('main');
 
 
 
