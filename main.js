@@ -4,9 +4,14 @@ var bodyInput = document.querySelector('.form__input--body');
 var saveBtn = document.querySelector('.form__btn');
 var searchInput = document.querySelector('.form__input--search');
 var cardsMain = document.querySelector('main');
+var ideaForm = document.querySelector('form');
+var paragraph = document.querySelector('.main__paragraph');
+var cardMain = document.querySelector('main');
 
-
-
+saveBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    generateIdeaCard();
+});
 
 
 
@@ -33,9 +38,29 @@ function createIdea() {
 
 }
 
-function generateIdeaCard({id, title, body, star, quality}) {
+// function hideCard() {
+//  paragraph.visibility = false;
+// }
 
-}
+function generateIdeaCard() {
+ cardMain.insertAdjacentHTML ('afterbegin', 
+ `<article>
+  <section class="article__section--header">
+    <img src="idea-box-images/star.svg" alt="small star icon">
+    <img src="idea-box-images/delete.svg" alt="X delete button">
+  </section>
+<section class="article__section--body">
+    <h2 class="">Idea title</h2>
+    <p class="">Idea body. Dont ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
+</section>
+  <section class="article__section--footer">
+    <img src="idea-box-images/upvote.svg" alt="round upvote icon">
+    <h3 class="article__section--h3">Quality: Swill</h3>
+    <img src="idea-box-images/downvote.svg" alt="round downvote icon">
+  </section>
+</article>`)
+};
+
 // ****DELETING EXISTING IDEA***
 // 4.On click of delete btn
 //   4.a idea card delete btn removes from both data model and DOM
