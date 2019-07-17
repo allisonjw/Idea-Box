@@ -21,6 +21,7 @@ saveBtn.addEventListener('click', function(e) {
     e.preventDefault();
     generateIdeaCard();
     hideCard();
+    clearFormInputs()
 });
 
                 // *******PHASE ONE*******
@@ -49,6 +50,11 @@ function enableSaveBtn(e) {
   } else {
     saveBtn.disabled = true;
   }
+}
+
+function clearFormInputs() {
+  titleInput.value = "";
+  bodyInput.value = "";
 }
 
 function hideCard() {
