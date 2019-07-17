@@ -200,6 +200,13 @@ p {
   margin-bottom: 20px;
 }
 
+.main__paragraph {
+ font-size: 3em;
+ font-style: italic;
+ margin-top: 5%;
+ position: absolute;
+}
+
 .article__section--h3{
   color: #ffffff;
 }
