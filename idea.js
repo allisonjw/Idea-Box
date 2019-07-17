@@ -1,5 +1,5 @@
 class Idea {
-	constructor(id, title, body, star, quality){
+	constructor(id, title, body, star, quality) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
@@ -7,7 +7,8 @@ class Idea {
 		this.quality = quality;
 	}
 	saveToStorage() {
-
+		console.log(ideasArray)
+	  localStorage.setItem('theIdea', JSON.stringify(ideasArray));	
 	}
 	deleteFromStorage() {
 

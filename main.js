@@ -16,11 +16,7 @@ var cardMain = document.querySelector('main');
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
-saveBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    hideCard();
-    clearFormInputs()
-});
+
 
 
 
@@ -54,20 +50,20 @@ function clearFormInputs() {
   bodyInput.value = "";
 }
 
-function hideCard() {
- paragraph.hidden = true;
-}
-
 function makeNewIdea(e) {
   e.preventDefault();
  var idea = new Idea(Date.now(), titleInput.value, bodyInput.value, false, 0);
+ console.log(idea)
  ideasArray.push(idea);
+ idea.saveToStorage(); 
  generateIdeaCard(idea);
+ clearFormInputs();
 }
 
 
 
 function generateIdeaCard({id, title, body, star, quality}) {
+ paragraph.hidden = true;
  cardMain.insertAdjacentHTML ('afterbegin',
  `<article>
   <section class="article__section--header"${id}>
@@ -85,6 +81,7 @@ function generateIdeaCard({id, title, body, star, quality}) {
   </section>
 </article>`)
 };
+
 
 // ****DELETING EXISTING IDEA***
 // 4.On click of delete btn
