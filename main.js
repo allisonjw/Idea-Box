@@ -7,17 +7,24 @@ var cardsMain = document.querySelector('main');
 var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
+// var ideaCard = document.querySelector('article');
 
-// form.addEventListener('keyup', function(e){
-//   e.preventDefault();
-//   disableSaveBtn();
-// };
+// form.addEventListener('click', deleteCard);
 // window.addEventListener('load' ); DOMContentLoaded
+cardMain.addEventListener('click', deleteCard);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
 
-
+function loadCards() {
+  ideasArray = JSON.parse(localStorage.getItem('theIdea'));
+  ideasArray.map(function(idea) {
+    console.log('test1')
+    return idea = new Idea(idea.id, idea.title, idea.body, idea.star, idea.quality)
+    console.log('test2')
+  generateIdeaCard(idea.id, idea.title, idea.body, idea.star, idea.quality);
+  })
+}
 
 
                 // *******PHASE ONE*******
@@ -53,7 +60,6 @@ function clearFormInputs() {
 function makeNewIdea(e) {
   e.preventDefault();
  var idea = new Idea(Date.now(), titleInput.value, bodyInput.value, false, 0);
- console.log(idea)
  ideasArray.push(idea);
  idea.saveToStorage(); 
  generateIdeaCard(idea);
@@ -67,8 +73,8 @@ function generateIdeaCard({id, title, body, star, quality}) {
  cardMain.insertAdjacentHTML ('afterbegin',
  `<article>
   <section class="article__section--header"${id}>
-    <img src="idea-box-images/star.svg" alt="small star icon"${star}>
-    <img src="idea-box-images/delete.svg" alt="X delete button">
+    <img src="idea-box-images/star.svg" class="article__star" alt="small star icon"${star}>
+    <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
   </section>
 <section class="article__section--body">
     <h2 class="article__section--h2" contentEditable="true">${title}</h2>
@@ -89,9 +95,13 @@ function generateIdeaCard({id, title, body, star, quality}) {
 // 	 4.b delete btn should remove correct card
 //   4.c page SHOULD NOT reload after delete
 
-function deleteCard() {
-
+function deleteCard(e) {
+  if (e.target.className === 'article__delete') {
+    e.target.closest('article').remove();
+  }
 }
+
+
 // ****REMOVE IDEA FROM LOCAL STORAGE****
 // 5.remove idea from local storage. Shouldnt re-appear on next page load
 //   5.a this should happen on idea.js in deleteFromStorage method
