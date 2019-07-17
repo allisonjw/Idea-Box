@@ -12,26 +12,17 @@ var cardMain = document.querySelector('main');
 //   e.preventDefault();
 //   disableSaveBtn();
 // };
-
+// window.addEventListener('load' ); DOMContentLoaded
 titleInput.addEventListener('keyup', enableSaveBtn);
-
 bodyInput.addEventListener('keyup', enableSaveBtn);
-
+saveBtn.addEventListener('click', makeNewIdea);
 saveBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    generateIdeaCard();
     hideCard();
     clearFormInputs()
 });
 
 
-function makeNewIdea() {
- console.log('ready')
- var idea = new Idea(titleInput.value, bodyInput.value)
-}
-
-
-makeNewIdea()
 
                 // *******PHASE ONE*******
 
@@ -44,9 +35,6 @@ makeNewIdea()
 //   3.c page SHOULD NOT reload
 //   3.d idea should be persisted. It should still be present upon reloading the page.
 
-function createIdea() {
-
-}
 
 function handleSave() {
 
@@ -70,20 +58,29 @@ function hideCard() {
  paragraph.hidden = true;
 }
 
-function generateIdeaCard() {
+function makeNewIdea(e) {
+  e.preventDefault();
+ var idea = new Idea(Date.now(), titleInput.value, bodyInput.value, false, 0);
+ ideasArray.push(idea);
+ generateIdeaCard(idea);
+}
+
+
+
+function generateIdeaCard({id, title, body, star, quality}) {
  cardMain.insertAdjacentHTML ('afterbegin',
  `<article>
-  <section class="article__section--header">
-    <img src="idea-box-images/star.svg" alt="small star icon">
+  <section class="article__section--header"${id}>
+    <img src="idea-box-images/star.svg" alt="small star icon"${star}>
     <img src="idea-box-images/delete.svg" alt="X delete button">
   </section>
 <section class="article__section--body">
-    <h2 class="article__section--h2" contentEditable="true">${titleInput.value}</h2>
-    <p class="article__section--p" contentEditable="true">${bodyInput.value}</p>
+    <h2 class="article__section--h2" contentEditable="true">${title}</h2>
+    <p class="article__section--p" contentEditable="true">${body}</p>
 </section>
   <section class="article__section--footer">
     <img src="idea-box-images/upvote.svg" alt="round upvote icon">
-    <h3 class="article__section--h3">Quality: Swill</h3>
+    <h3 class="article__section--h3">Quality: ${quality}</h3>
     <img src="idea-box-images/downvote.svg" alt="round downvote icon">
   </section>
 </article>`)
