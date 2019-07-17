@@ -8,6 +8,15 @@ var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
 
+// form.addEventListener('keyup', function(e){
+//   e.preventDefault();
+//   disableSaveBtn();
+// };
+
+titleInput.addEventListener('keyup', enableSaveBtn);
+
+bodyInput.addEventListener('keyup', enableSaveBtn);
+
 saveBtn.addEventListener('click', function(e) {
     e.preventDefault();
     generateIdeaCard();
@@ -31,6 +40,15 @@ function createIdea() {
 
 function handleSave() {
 
+}
+
+function enableSaveBtn(e) {
+  e.preventDefault;
+  if (titleInput.value !== "" && bodyInput.value !== "") {
+    saveBtn.disabled = false;
+  } else {
+    saveBtn.disabled = true;
+  }
 }
 
 function hideCard() {
