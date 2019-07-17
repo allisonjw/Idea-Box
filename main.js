@@ -24,6 +24,15 @@ saveBtn.addEventListener('click', function(e) {
     clearFormInputs()
 });
 
+
+function makeNewIdea() {
+ console.log('ready')
+ var idea = new Idea(titleInput.value, bodyInput.value)
+}
+
+
+makeNewIdea()
+
                 // *******PHASE ONE*******
 
 // ****VIEWING AND ADDING NEW IDEA****
@@ -136,3 +145,5 @@ function changeQuality() {
 function handleSearch() {
 
 }
+
+document.write('<script type="text/javascript" src="idea.js"></script>');
