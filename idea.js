@@ -6,8 +6,7 @@ class Idea {
 		this.star = star || false;
 		this.quality = quality;
 	}
-	saveToStorage() {
-		console.log(ideasArray)
+	saveToStorage(ideasArray) {
 	  localStorage.setItem('theIdea', JSON.stringify(ideasArray));	
 	}
 	deleteFromStorage() {
