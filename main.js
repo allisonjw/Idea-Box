@@ -8,9 +8,9 @@ var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
 getCards();
-// reDisplayCards();
+reDisplayCards();
 // form.addEventListener('click', deleteCard);
-// window.addEventListener('load' getCards); 
+// window.addEventListener('load' getCards);
 cardMain.addEventListener('click', deleteCard);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
@@ -19,10 +19,9 @@ saveBtn.addEventListener('click', makeNewIdea);
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
   } else {
-  var newIdeasArray = JSON.parse(localStorage.getItem('theIdea')).map(function(idea) {
-    return new Idea(idea.id, idea.title, idea.body, idea.star, idea.quality);
+  ideasArray = JSON.parse(localStorage.getItem('theIdea')).map(function({id, title, body, star, quality}) {
+    return new Idea(id, title, body, star, quality);
   });
-  ideasArray = newIdeasArray;
 }
 }
   // generateIdeaCard();
@@ -56,19 +55,18 @@ function makeNewIdea(e) {
   e.preventDefault();
  var idea = new Idea(Date.now(), titleInput.value, bodyInput.value, false, 0);
  ideasArray.push(idea);
- idea.saveToStorage(ideasArray); 
+ idea.saveToStorage(ideasArray);
  generateIdeaCard(idea);
  clearFormInputs();
 }
 
-// function reDisplayCards() {
-//   console.log(ideasArray)
-//   console.log('what')
-//   for (var i = 0; i < ideasArray.length; i++) {
-//   // when will this be called to display cards  
-//   }
-//   generateIdeaCard();
-// }
+function reDisplayCards() {
+  console.log(ideasArray)
+  console.log('what')
+  for (var i = 0; i < ideasArray.length; i++) {
+    generateIdeaCard(ideasArray[i]);
+  }
+}
 
 
 function generateIdeaCard({id, title, body, star, quality}) {
@@ -111,7 +109,7 @@ function deleteCard(e) {
 // }
 
 function getCardIndex() {
-} 
+}
 
 // ****EDIT/STAR EXISTING IDEA****
 // 6. idea and body on card should be contentEditable="true" attribute
