@@ -7,23 +7,25 @@ var cardsMain = document.querySelector('main');
 var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
-var idea;
-// var ideaCard = document.querySelector('article');
-
+getCards();
+// reDisplayCards();
 // form.addEventListener('click', deleteCard);
-// window.addEventListener('load' ); DOMContentLoaded
+// window.addEventListener('load' getCards); 
 cardMain.addEventListener('click', deleteCard);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
 
-function loadCards() {
-  ideasArray = JSON.parse(localStorage.getItem('theIdea'));
-  var newIdeasArray = ideasArray.map(function(idea) {
-    return idea = new Idea(idea.id, idea.title, idea.body, idea.star, idea.quality)
-  generateIdeaCard();
-  })
+function getCards() {
+  if (JSON.parse(localStorage.getItem('theIdea')) === null) {
+  } else {
+  var newIdeasArray = JSON.parse(localStorage.getItem('theIdea')).map(function(idea) {
+    return new Idea(idea.id, idea.title, idea.body, idea.star, idea.quality);
+  });
+  ideasArray = newIdeasArray;
 }
+}
+  // generateIdeaCard();
 
                 // *******PHASE ONE*******
 
@@ -54,18 +56,26 @@ function makeNewIdea(e) {
   e.preventDefault();
  var idea = new Idea(Date.now(), titleInput.value, bodyInput.value, false, 0);
  ideasArray.push(idea);
- idea.saveToStorage(); 
+ idea.saveToStorage(ideasArray); 
  generateIdeaCard(idea);
  clearFormInputs();
 }
 
+// function reDisplayCards() {
+//   console.log(ideasArray)
+//   console.log('what')
+//   for (var i = 0; i < ideasArray.length; i++) {
+//   // when will this be called to display cards  
+//   }
+//   generateIdeaCard();
+// }
 
 
 function generateIdeaCard({id, title, body, star, quality}) {
  paragraph.hidden = true;
  cardMain.insertAdjacentHTML ('afterbegin',
- `<article>
-  <section class="article__section--header"${id}>
+ `<article class="main__article--card" data-id=${id}>
+  <section class="article__section--header">
     <img src="idea-box-images/star.svg" class="article__star" alt="small star icon"${star}>
     <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
   </section>
@@ -96,6 +106,12 @@ function deleteCard(e) {
   }
 }
 
+// function getId(e) {
+//   return (e.target.closest('main__article--card').getAttribute.(data-id));
+// }
+
+function getCardIndex() {
+} 
 
 // ****EDIT/STAR EXISTING IDEA****
 // 6. idea and body on card should be contentEditable="true" attribute
@@ -136,8 +152,4 @@ function changeQuality() {
 //   3.c Clearing the search box should restore all the idea cards to the list
 //   3.d doesnt need to persist. Not changed to idea.js needed
 
-function handleSearch() {
-
-}
-
-document.write('<script type="text/javascript" src="idea.js"></script>');
+// function handleSearch() {}
