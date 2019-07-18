@@ -6,16 +6,20 @@ class Idea {
 		this.star = star || false;
 		this.quality = quality;
 	}
-	saveToStorage() {
+	saveToStorage(ideasArray) {
 	  localStorage.setItem('theIdea', JSON.stringify(ideasArray));
 	}
-	deleteFromStorage() {
-		localStorage.removeItem('data-id');
+	deleteFromStorage(index) {
+		console.log('linked')
+		ideasArray.splice(index, 1);
+		this.saveToStorage(ideasArray)
+		console.log(ideasArray)
 	}
-	updateIdea() {
 
-	}
-	updateQuality() {
-
-	}
+	// updateIdea() {
+	//
+	// }
+	// updateQuality() {
+	//
+	// }
 }

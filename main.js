@@ -10,7 +10,7 @@ var cardMain = document.querySelector('main');
 getCards();
 reDisplayCards();
 
-cardMain.addEventListener('click', deleteCard);
+cardMain.addEventListener('click', getId);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
@@ -84,22 +84,16 @@ function getId(e) {
   var findId = e.target.closest('article').getAttribute('data-id');
   console.log(findId)
   console.log(ideasArray)
-  // var dataId = ideasArray.find(function(id);
-  // e.target.closest('article').getAttribute('data');
-  // article.dataset.id
   var index = ideasArray.findIndex(function(idea) {
      return idea.id == findId;
 })
-console.log(index);
+e.target.closest('article').remove();
+ideasArray[index].deleteFromStorage(index);
 }
 
-function deleteCard(e) {
-  if (e.target.className === 'article__delete') {
-    getId(e)// var dataId = e.target.closest('article').getAttribute('data-id');
-    e.target.closest('article').remove();
-    // idea.DeleteFromStorage(dataId);
-  }
-}
+// function deleteCard(e) {
+//   if (e.target.className === 'article__delete') {
+//     getId(e)// var dataId = e.target.closest('article').getAttribute('data-id');
 
 // function getCardIndex() {
 // }
