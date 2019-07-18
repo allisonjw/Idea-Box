@@ -7,10 +7,10 @@ class Idea {
 		this.quality = quality;
 	}
 	saveToStorage() {
-	  localStorage.setItem('theIdea', JSON.stringify(ideasArray));	
+	  localStorage.setItem('theIdea', JSON.stringify(ideasArray));
 	}
 	deleteFromStorage() {
-
+		localStorage.removeItem('data-id');
 	}
 	updateIdea() {
 
@@ -18,4 +18,4 @@ class Idea {
 	updateQuality() {
 
 	}
-}	
+}

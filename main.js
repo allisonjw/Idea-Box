@@ -9,8 +9,7 @@ var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
 getCards();
 reDisplayCards();
-// form.addEventListener('click', deleteCard);
-// window.addEventListener('load' getCards);
+
 cardMain.addEventListener('click', deleteCard);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
@@ -23,18 +22,6 @@ function getCards() {
     return new Idea(id, title, body, star, quality);
   });
 }
-}
-  // generateIdeaCard();
-
-                // *******PHASE ONE*******
-
-// ****VIEWING AND ADDING NEW IDEA****
-// 3.On click on save btn
-//   3.d idea should be persisted. It should still be present upon reloading the page.
-
-
-function handleSave() {
-
 }
 
 function enableSaveBtn(e) {
@@ -61,13 +48,10 @@ function makeNewIdea(e) {
 }
 
 function reDisplayCards() {
-  console.log(ideasArray)
-  console.log('what')
   for (var i = 0; i < ideasArray.length; i++) {
     generateIdeaCard(ideasArray[i]);
   }
 }
-
 
 function generateIdeaCard({id, title, body, star, quality}) {
  paragraph.hidden = true;
@@ -96,20 +80,29 @@ function generateIdeaCard({id, title, body, star, quality}) {
 // 	 4.b delete btn should remove correct card
 //   4.c page SHOULD NOT reload after delete
 
+function getId(e) {
+  var findId = e.target.closest('article').getAttribute('data-id');
+  console.log(findId)
+  console.log(ideasArray)
+  // var dataId = ideasArray.find(function(id);
+  // e.target.closest('article').getAttribute('data');
+  // article.dataset.id
+  var index = ideasArray.findIndex(function(idea) {
+     return idea.id == findId;
+})
+console.log(index);
+}
 
 function deleteCard(e) {
   if (e.target.className === 'article__delete') {
+    getId(e)// var dataId = e.target.closest('article').getAttribute('data-id');
     e.target.closest('article').remove();
-    // idea.DeleteFromStorage();
+    // idea.DeleteFromStorage(dataId);
   }
 }
 
-// function getId(e) {
-//   return (e.target.closest('main__article--card').getAttribute.(data-id));
+// function getCardIndex() {
 // }
-
-function getCardIndex() {
-}
 
 // ****EDIT/STAR EXISTING IDEA****
 // 6. idea and body on card should be contentEditable="true" attribute
