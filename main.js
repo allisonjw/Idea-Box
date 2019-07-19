@@ -87,8 +87,10 @@ function getId(e) {
   var index = ideasArray.findIndex(function(idea) {
      return idea.id == findId;
 })
+if (e.target.classList[0] === "article__delete") {
 e.target.closest('article').remove();
 ideasArray[index].deleteFromStorage(index);
+ }
 }
 
 // function deleteCard(e) {
