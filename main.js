@@ -6,11 +6,12 @@ var searchInput = document.querySelector('.form__input--search');
 var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
-var cardArticle = document.querySelector('.main__article--card');
+// var cardArticle = document.querySelector('.main__article--card');
 getCards();
 reDisplayCards();
 
 cardMain.addEventListener('click', getId);
+cardMain.addEventListener('keydown', handleEnter);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
@@ -57,10 +58,11 @@ function reDisplayCards() {
 
 function generateIdeaCard({id, title, body, star, quality}) {
  paragraph.hidden = true;
+ var starSrc = star ? "images/star-active.svg" : "images/star.svg";
  cardMain.insertAdjacentHTML ('afterbegin',
  `<article class="main__article--card" data-id=${id}>
   <section class="article__section--header">
-    <img src="idea-box-images/star.svg" class="article__star" alt="small star icon"${star}>
+    <img src="idea-box-images/star.svg" class="article__section--star" alt="small star icon"${star}>
     <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
   </section>
 <section class="article__section--body">
@@ -68,31 +70,24 @@ function generateIdeaCard({id, title, body, star, quality}) {
     <p class="article__section--p" contentEditable="true">${body}</p>
 </section>
   <section class="article__section--footer">
-    <img src="idea-box-images/upvote.svg" alt="round upvote icon">
+    <img src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
     <h3 class="article__section--h3">Quality: ${quality}</h3>
-    <img src="idea-box-images/downvote.svg" alt="round downvote icon">
+    <img src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
   </section>
 </article>`)
 };
-
-
-// ****DELETING EXISTING IDEA***
-// 4.On click of delete btn
-//   4.a idea card delete btn removes from both data model and DOM
-// 	 4.b delete btn should remove correct card
-//   4.c page SHOULD NOT reload after delete
 
 function getId(e) {
   var findId = e.target.closest('article').getAttribute('data-id');
   console.log(findId)
   console.log(ideasArray)
   var index = ideasArray.findIndex(function(idea) {
-     return idea.id == findId;
+    return idea.id == findId;
 })
 if (e.target.classList[0] === "article__delete") {
   deleteCard(e, index);
  }
-  return index;
+    return index;
 }
 
 function deleteCard(e, index) {
@@ -107,33 +102,33 @@ function updateIdeaInputs(e) {
     ideasArray[index].updateIdea('title', editTitle, ideasArray, index);
   }
   if (e.target.className === 'article__section--p') {
-    console.log('fire')
     var editBody = e.target.innerText;
     ideasArray[index].updateIdea('body', editBody, ideasArray, index);
   }
-    // var getCard = getId(e);
-    // console.log({getCard})
-    // getCard.updateIdea(editTitle, editedBody);
-  // ideasArray[index].updateIdea(editTitle, editedBody);
-    // if (e.keycode === 13) {
-  // }
 }
 
-// function deleteCard(e) {
-//   if (e.target.className === 'article__delete') {
-//     getId(e)// var dataId = e.target.closest('article').getAttribute('data-id');
+function handleEnter(e) {
+  if (e.key === 'Enter') {
+      e.target.blur();
+      updateIdeaInputs(e);
+  }
+}
+      // ****EDIT/STAR EXISTING IDEA****
 
-// function getCardIndex() {
+// Star Steps
+// 1. star img needs to have active(true) state (images/star-active.svg)
+  //  1.a star needs to STAY in active state when clicked
+// 2. star img needs to have inactive(false) state (images/star.svg)
+
+// function toggleStarImg(e) {
+//   var starImg = e.target.classList.contains('article__section--star')); 
+//   var index = getId(e);
+// if (something is true) {
+//   starImg.setAttribute("src", "images/star-active.svg")
+// } else if (something is false) {
+//   starImg.setAttribute("src", "images/star.svg")
 // }
-
-// ****EDIT/STAR EXISTING IDEA****
-// 6. idea and body on card should be contentEditable="true" attribute
-//   6.a changes are 'commited' by pressing enter/return and clicking outside of text field(keycode 13 and blur)
-//   6.b when star is clicked it should stay in active(orange) state
-
-function updateCard() {
-
-}
+// }
 
 // ****UPDATE IDEA IN LOCAL STORAGE****
 // 7.if page is reloaded, edit should persist
