@@ -18,14 +18,13 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
 cardMain.addEventListener('focusout', updateIdeaInputs);
 
-
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
   } else {
   ideasArray = JSON.parse(localStorage.getItem('theIdea')).map(function({id, title, body, star, quality}) {
     return new Idea(id, title, body, star, quality);
-  });
-}
+    });
+  }
 }
 
 function enableSaveBtn(e) {
@@ -112,12 +111,6 @@ function handleEnter(e) {
       updateIdeaInputs(e);
   }
 }
-      // ****EDIT/STAR EXISTING IDEA****
-
-// Star Steps
-// 1. star img needs to have active(true) state (images/star-active.svg)
-  //  1.a star needs to STAY in active state when clicked
-// 2. star img needs to have inactive(false) state (images/star.svg)
 
 function toggleStarImg(e) {
   var index = getId(e);
@@ -127,34 +120,13 @@ function toggleStarImg(e) {
   if (ideasArray[index].star === false) {
     starImg.src = active;
     ideasArray[index].star = true;
+    ideasArray[index].saveToStorage(ideasArray);
   } else {
     starImg.src = inactive;
     ideasArray[index].star = false;
+    ideasArray[index].saveToStorage(ideasArray);
 }
 }
-
-function saveStarChange(e, index) {
-  e.target.closest('.article__section--star');
-  console.log('boom')
-  var index = getId(e);
-  ideasArray[index].star = !ideasArray[index].star;
-  ideasArray[index].saveToStorage(index);
-  toggleStarImg(e, index);
-}
-
-
-
- 
-
-// var active = "idea-box-images/star-active.svg";
-// var inactive = "idea-box-images/star.svg";
-// querySelector for card index
-
-
-// ****UPDATE IDEA IN LOCAL STORAGE****
-// 7.if page is reloaded, edit should persist
-//   7.a update of idea.js should be in updateIdea method
-//   7.b DOM gets updated in main.js file (where you can still leverage your idea instance)
 
 		        // *******PHASE TWO*******
 
@@ -165,9 +137,9 @@ function saveStarChange(e, index) {
 //   1.c Clicking downvote should decrease its quality one notch (“genius” → “plausible”, “plausible” → “swill”)
 //   1.d shouldnt be able to increase "genius" idea or decrease "swill" idea
 
-function changeQuality() {
-
-}
+// function changeQuality() {
+//
+// }
 
 // ****UPDATE QUALITY IN LOCAL STORAGE****
 // 2.if page is reloaded, edit should persist
