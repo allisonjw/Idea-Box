@@ -12,6 +12,7 @@ reDisplayCards();
 
 cardMain.addEventListener('click', getId);
 cardMain.addEventListener('keydown', handleEnter);
+cardMain.addEventListener('click', toggleStarImg);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
@@ -58,11 +59,11 @@ function reDisplayCards() {
 
 function generateIdeaCard({id, title, body, star, quality}) {
  paragraph.hidden = true;
- var starSrc = star ? "images/star-active.svg" : "images/star.svg";
+ var starImg = star ? "star-active.svg" : "star.svg";
  cardMain.insertAdjacentHTML ('afterbegin',
  `<article class="main__article--card" data-id=${id}>
   <section class="article__section--header">
-    <img src="idea-box-images/star.svg" class="article__section--star" alt="small star icon"${star}>
+    <img src="idea-box-images/${starImg}" class="article__section--star" alt="small star icon">
     <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
   </section>
 <section class="article__section--body">
@@ -79,8 +80,6 @@ function generateIdeaCard({id, title, body, star, quality}) {
 
 function getId(e) {
   var findId = e.target.closest('article').getAttribute('data-id');
-  console.log(findId)
-  console.log(ideasArray)
   var index = ideasArray.findIndex(function(idea) {
     return idea.id == findId;
 })
@@ -120,15 +119,37 @@ function handleEnter(e) {
   //  1.a star needs to STAY in active state when clicked
 // 2. star img needs to have inactive(false) state (images/star.svg)
 
-// function toggleStarImg(e) {
-//   var starImg = e.target.classList.contains('article__section--star')); 
-//   var index = getId(e);
-// if (something is true) {
-//   starImg.setAttribute("src", "images/star-active.svg")
-// } else if (something is false) {
-//   starImg.setAttribute("src", "images/star.svg")
-// }
-// }
+function toggleStarImg(e) {
+  var index = getId(e);
+  var starImg = e.target.closest('.article__section--star');
+  var active = "idea-box-images/star-active.svg";
+  var inactive = "idea-box-images/star.svg";
+  if (ideasArray[index].star === false) {
+    starImg.src = active;
+    ideasArray[index].star = true;
+  } else {
+    starImg.src = inactive;
+    ideasArray[index].star = false;
+}
+}
+
+function saveStarChange(e, index) {
+  e.target.closest('.article__section--star');
+  console.log('boom')
+  var index = getId(e);
+  ideasArray[index].star = !ideasArray[index].star;
+  ideasArray[index].saveToStorage(index);
+  toggleStarImg(e, index);
+}
+
+
+
+ 
+
+// var active = "idea-box-images/star-active.svg";
+// var inactive = "idea-box-images/star.svg";
+// querySelector for card index
+
 
 // ****UPDATE IDEA IN LOCAL STORAGE****
 // 7.if page is reloaded, edit should persist

@@ -26,8 +26,14 @@ class Idea {
 		}
 		console.log('new this', this)
 		ideasArray.splice(index, 1, this);
+		this.star = !this.star;
 		this.saveToStorage(ideasArray);
 	}
+
+	// updateStar() {
+	// 	this.star = !this.star;
+	// 	// this.saveToStorage(ideasArray);
+	// }
 
 	// updateQuality() {
 	//
