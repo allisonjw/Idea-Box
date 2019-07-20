@@ -3,10 +3,10 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__input--body');
 var saveBtn = document.querySelector('.form__btn');
 var searchInput = document.querySelector('.form__input--search');
-var cardsMain = document.querySelector('main');
 var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
+var cardArticle = document.querySelector('.main__article--card');
 getCards();
 reDisplayCards();
 
@@ -14,6 +14,8 @@ cardMain.addEventListener('click', getId);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
+cardMain.addEventListener('focusout', updateIdeaInputs);
+
 
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
@@ -88,9 +90,33 @@ function getId(e) {
      return idea.id == findId;
 })
 if (e.target.classList[0] === "article__delete") {
-e.target.closest('article').remove();
-ideasArray[index].deleteFromStorage(index);
+  deleteCard(e, index);
  }
+  return index;
+}
+
+function deleteCard(e, index) {
+  e.target.closest('article').remove();
+  ideasArray[index].deleteFromStorage(index);
+};
+
+function updateIdeaInputs(e) {
+  var index = getId(e);
+  if (e.target.className === 'article__section--h2') {
+    var editTitle = e.target.innerText;
+    ideasArray[index].updateIdea('title', editTitle, ideasArray, index);
+  }
+  if (e.target.className === 'article__section--p') {
+    console.log('fire')
+    var editBody = e.target.innerText;
+    ideasArray[index].updateIdea('body', editBody, ideasArray, index);
+  }
+    // var getCard = getId(e);
+    // console.log({getCard})
+    // getCard.updateIdea(editTitle, editedBody);
+  // ideasArray[index].updateIdea(editTitle, editedBody);
+    // if (e.keycode === 13) {
+  // }
 }
 
 // function deleteCard(e) {
