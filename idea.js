@@ -6,19 +6,29 @@ class Idea {
 		this.star = star || false;
 		this.quality = quality;
 	}
+
 	saveToStorage(ideasArray) {
 	  localStorage.setItem('theIdea', JSON.stringify(ideasArray));
 	}
+
 	deleteFromStorage(index) {
-		console.log('linked')
 		ideasArray.splice(index, 1);
 		this.saveToStorage(ideasArray)
-		console.log(ideasArray)
 	}
 
-	// updateIdea() {
-	//
-	// }
+	updateIdea(type, text, ideasArray, index) {
+		console.log('this', this)
+		if(type === 'title'){
+			this.title = text;
+		}
+		if(type === 'body'){
+			this.body = text;
+		}
+		console.log('new this', this)
+		ideasArray.splice(index, 1, this);
+		this.saveToStorage(ideasArray);
+	}
+
 	// updateQuality() {
 	//
 	// }
