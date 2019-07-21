@@ -165,6 +165,7 @@ function decrementQuality(e, index, quality) {
 }
 }
 
+
   // var upvoteActive = "idea-box-images/upvote-active.svg";
   // var upvoteInactive = "idea-box-images/upvote.svg";
 
