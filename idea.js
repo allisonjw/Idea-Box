@@ -28,4 +28,8 @@ class Idea {
 		ideasArray.splice(index, 1, this);
 		this.saveToStorage(ideasArray);
 	}
+
+	updateQuality(){
+
+	}
 }

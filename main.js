@@ -136,36 +136,40 @@ function toggleStarImg(e) {
 }
 		        // *******PHASE TWO*******
 
-// ****CHANGE QUALITY OF IDEA****
-// 1.all ideas start out as 'Swill'
-//   1.a upvote and downvote should be buttons
-//   1.b Clicking upvote should increase its quality one notch (“swill” → “plausible”, “plausible” → “genius”)
-//   1.c Clicking downvote should decrease its quality one notch (“genius” → “plausible”, “plausible” → “swill”)
-//   1.d shouldnt be able to increase "genius" idea or decrease "swill" idea
+// ****BUTTON FUNTIONALITY TO DO****
 
 function incrementQuality(e, index, quality) {
   var index = getId(e);
   var upVote = e.target.closest('.article__section--upvote');
-  upVote.src === "idea-box-images/upvote.svg";
-  var newQualityInteger = ideasArray[index].quality++;
-  if(newQualityInteger < 2) {
-  qualityArray[newQualityInteger];
-  ideasArray[index].saveToStorage(ideasArray);
-}
+  if(e.target === upVote) {
+    console.log('hello1')
+    if(ideasArray[index].quality < qualityArray.length - 1) {
+      console.log('hello2')
+    ideasArray[index].quality++;
+    ideasArray[index].saveToStorage(ideasArray);
+    updateQuality(e, ideasArray[index].quality);
+    }
+  }
 }
 
 function decrementQuality(e, index, quality) {
   var index = getId(e);
-  var upVote = e.target.closest('.article__section--downvote');
-  upVote.src === "idea-box-images/downvote.svg";
-  var newQualityInteger = ideasArray[index].quality--;
-  if(newQualityInteger > 0) {
-  qualityArray[newQualityInteger];
-  ideasArray[index].saveToStorage(ideasArray);
-}
+  var downVote = e.target.closest('.article__section--downvote');
+  if(e.target === downVote) {
+    if(ideasArray[index].quality >= 1) {
+    ideasArray[index].quality--;
+    ideasArray[index].saveToStorage(ideasArray);
+    updateQuality(e, ideasArray[index].quality);
+    }
+  }
 }
 
-
+function updateQuality(e, quality) {
+  console.log(quality)
+    if(e.target) {
+    e.target.parentNode.children[1].innerText = `Quality: ${qualityArray[quality]}`
+  }
+}
   // var upvoteActive = "idea-box-images/upvote-active.svg";
   // var upvoteInactive = "idea-box-images/upvote.svg";
 
