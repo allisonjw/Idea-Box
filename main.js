@@ -19,7 +19,7 @@ cardMain.addEventListener('keydown', handleEnter);
 cardMain.addEventListener('click', toggleStarImg);
 cardMain.addEventListener('focusout', updateIdeaInputs);
 cardMain.addEventListener('click', incrementQuality);
-// cardMain.addEventListener('click', decrementQuality);
+cardMain.addEventListener('click', decrementQuality);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
@@ -148,6 +148,15 @@ function incrementQuality(e, index, quality) {
   var upVote = e.target.closest('.article__section--upvote');
   upVote.src === "idea-box-images/upvote.svg";
   var newQualityInteger = ideasArray[index].quality++;
+  qualityArray[newQualityInteger];
+  ideasArray[index].saveToStorage(ideasArray);
+}
+
+function decrementQuality(e, index, quality) {
+  var index = getId(e);
+  var upVote = e.target.closest('.article__section--downvote');
+  upVote.src === "idea-box-images/downvote.svg";
+  var newQualityInteger = ideasArray[index].quality--;
   qualityArray[newQualityInteger];
   ideasArray[index].saveToStorage(ideasArray);
 }
