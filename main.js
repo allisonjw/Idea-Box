@@ -6,7 +6,7 @@ var searchInput = document.querySelector('.form__input--search');
 var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
-// var cardArticle = document.querySelector('.main__article--card');
+var search = document.querySelector('.form__input--search')
 getCards();
 reDisplayCards();
 
@@ -17,6 +17,7 @@ titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
 cardMain.addEventListener('focusout', updateIdeaInputs);
+search.addEventListener('keyup', filterSearch);
 
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
@@ -137,9 +138,10 @@ function toggleStarImg(e) {
 //   1.c Clicking downvote should decrease its quality one notch (“genius” → “plausible”, “plausible” → “swill”)
 //   1.d shouldnt be able to increase "genius" idea or decrease "swill" idea
 
-// function changeQuality() {
-//
-// }
+function changeQuality() {
+
+}
+
 
 // ****UPDATE QUALITY IN LOCAL STORAGE****
 // 2.if page is reloaded, edit should persist
@@ -153,4 +155,13 @@ function toggleStarImg(e) {
 //   3.c Clearing the search box should restore all the idea cards to the list
 //   3.d doesnt need to persist. Not changed to idea.js needed
 
-// function handleSearch() {}
+function filterSearch() {
+  var searchText = document.querySelector('.form__input--search').value;
+  var results = ideasArray.filter(function(idea){
+      return idea.title.toLowerCase().includes(searchText) || idea.body.toLowerCase().includes(searchText);
+  })
+  document.querySelector('main').innerText = '';
+  results.forEach(function(idea) {
+   generateIdeaCard(idea);
+  });
+}
