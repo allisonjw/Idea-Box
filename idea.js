@@ -4,7 +4,7 @@ class Idea {
 		this.title = title;
 		this.body = body;
 		this.star = star || false;
-		this.quality = quality;
+		this.quality = quality || 0;
 	}
 
 	saveToStorage(ideasArray) {
@@ -16,16 +16,13 @@ class Idea {
 		this.saveToStorage(ideasArray)
 	}
 
-	updateIdea(type, text, ideasArray, index, star) {
+	updateIdea(type, text, ideasArray, index) {
 		console.log('this', this)
 		if(type === 'title'){
 			this.title = text;
 		}
 		if(type === 'body'){
 			this.body = text;
-		}
-		if(star === true){
-			this.star = true;
 		}
 		console.log('new this', this)
 		ideasArray.splice(index, 1, this);
