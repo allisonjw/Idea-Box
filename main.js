@@ -1,4 +1,5 @@
 var ideasArray = [];
+var qualityArray = ['Swill', 'Plausible', 'Genius'];
 var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__input--body');
 var saveBtn = document.querySelector('.form__btn');
@@ -7,16 +8,20 @@ var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
 var search = document.querySelector('.form__input--search')
+var upVote = document.querySelector('.article__section--upvote');
+var downVote = document.querySelector('.article__section--downvote');
+
 getCards();
 reDisplayCards();
 
 cardMain.addEventListener('click', getId);
 cardMain.addEventListener('keydown', handleEnter);
 cardMain.addEventListener('click', toggleStarImg);
+cardMain.addEventListener('focusout', updateIdeaInputs);
+cardMain.addEventListener('click', incrementQuality);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
-cardMain.addEventListener('focusout', updateIdeaInputs);
 search.addEventListener('keyup', filterSearch);
 
 function getCards() {
@@ -72,7 +77,7 @@ function generateIdeaCard({id, title, body, star, quality}) {
 </section>
   <section class="article__section--footer">
     <img src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
-    <h3 class="article__section--h3">Quality: ${quality}</h3>
+    <h3 class="article__section--h3">Quality: ${qualityArray[quality]}</h3>
     <img src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
   </section>
 </article>`)
@@ -126,7 +131,7 @@ function toggleStarImg(e) {
     starImg.src = inactive;
     ideasArray[index].star = false;
     ideasArray[index].saveToStorage(ideasArray);
-}
+  }
 }
 
 		        // *******PHASE TWO*******
@@ -138,10 +143,19 @@ function toggleStarImg(e) {
 //   1.c Clicking downvote should decrease its quality one notch (“genius” → “plausible”, “plausible” → “swill”)
 //   1.d shouldnt be able to increase "genius" idea or decrease "swill" idea
 
-function changeQuality() {
-
+function incrementQuality(e, index, quality) {
+  var index = getId(e);
+  var upvoteImg = e.target.closest('.article__section--upvote');
+  var newQualityInteger = ideasArray[index].quality++;
+console.log(newQualityInteger)
+  qualityArray[newQualityInteger];
+  ideasArray[index].saveToStorage(ideasArray);
 }
-
+  // var upvoteActive = "idea-box-images/upvote-active.svg";
+  // var upvoteInactive = "idea-box-images/upvote.svg";
+  // for(i = 0; i < qualityArray.length; i++) {
+  //   qualityArray[i];
+  //   console.log(qualityArray[i])
 
 // ****UPDATE QUALITY IN LOCAL STORAGE****
 // 2.if page is reloaded, edit should persist
