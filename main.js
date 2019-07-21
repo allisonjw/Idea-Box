@@ -148,8 +148,10 @@ function incrementQuality(e, index, quality) {
   var upVote = e.target.closest('.article__section--upvote');
   upVote.src === "idea-box-images/upvote.svg";
   var newQualityInteger = ideasArray[index].quality++;
+  if(newQualityInteger < 2) {
   qualityArray[newQualityInteger];
   ideasArray[index].saveToStorage(ideasArray);
+}
 }
 
 function decrementQuality(e, index, quality) {
@@ -157,8 +159,10 @@ function decrementQuality(e, index, quality) {
   var upVote = e.target.closest('.article__section--downvote');
   upVote.src === "idea-box-images/downvote.svg";
   var newQualityInteger = ideasArray[index].quality--;
+  if(newQualityInteger > 0) {
   qualityArray[newQualityInteger];
   ideasArray[index].saveToStorage(ideasArray);
+}
 }
 
   // var upvoteActive = "idea-box-images/upvote-active.svg";
