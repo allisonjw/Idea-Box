@@ -19,6 +19,7 @@ cardMain.addEventListener('keydown', handleEnter);
 cardMain.addEventListener('click', toggleStarImg);
 cardMain.addEventListener('focusout', updateIdeaInputs);
 cardMain.addEventListener('click', incrementQuality);
+// cardMain.addEventListener('click', decrementQuality);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
@@ -133,7 +134,6 @@ function toggleStarImg(e) {
     ideasArray[index].saveToStorage(ideasArray);
   }
 }
-
 		        // *******PHASE TWO*******
 
 // ****CHANGE QUALITY OF IDEA****
@@ -145,29 +145,20 @@ function toggleStarImg(e) {
 
 function incrementQuality(e, index, quality) {
   var index = getId(e);
-  var upvoteImg = e.target.closest('.article__section--upvote');
+  var upVote = e.target.closest('.article__section--upvote');
+  upVote.src === "idea-box-images/upvote.svg";
   var newQualityInteger = ideasArray[index].quality++;
-console.log(newQualityInteger)
   qualityArray[newQualityInteger];
   ideasArray[index].saveToStorage(ideasArray);
 }
+
   // var upvoteActive = "idea-box-images/upvote-active.svg";
   // var upvoteInactive = "idea-box-images/upvote.svg";
-  // for(i = 0; i < qualityArray.length; i++) {
-  //   qualityArray[i];
-  //   console.log(qualityArray[i])
 
 // ****UPDATE QUALITY IN LOCAL STORAGE****
 // 2.if page is reloaded, edit should persist
 //   2.a update of idea.js should be in updateQuality method
 //   2.b DOM gets updated in main.js file (where you can still leverage your idea instance)
-
-// ****FILTER AND SEARCH BY TEXT****
-// 3. Upon searching
-//   3.a As user types (keyup) in search, the list of ideas should filter in real time to only display ideas whose title or body includ.
-//   3.b The page SHOULD NOT reload.
-//   3.c Clearing the search box should restore all the idea cards to the list
-//   3.d doesnt need to persist. Not changed to idea.js needed
 
 function filterSearch() {
   var searchText = document.querySelector('.form__input--search').value;
