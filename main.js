@@ -7,6 +7,7 @@ var searchInput = document.querySelector('.form__input--search');
 var ideaForm = document.querySelector('form');
 var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
+var search = document.querySelector('.form__input--search')
 var upVote = document.querySelector('.article__section--upvote');
 var downVote = document.querySelector('.article__section--downvote');
 
@@ -21,7 +22,7 @@ cardMain.addEventListener('click', incrementQuality);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
-
+search.addEventListener('keyup', filterSearch);
 
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
@@ -156,8 +157,6 @@ console.log(newQualityInteger)
   //   qualityArray[i];
   //   console.log(qualityArray[i])
 
-
-
 // ****UPDATE QUALITY IN LOCAL STORAGE****
 // 2.if page is reloaded, edit should persist
 //   2.a update of idea.js should be in updateQuality method
@@ -170,4 +169,13 @@ console.log(newQualityInteger)
 //   3.c Clearing the search box should restore all the idea cards to the list
 //   3.d doesnt need to persist. Not changed to idea.js needed
 
-// function handleSearch() {}
+function filterSearch() {
+  var searchText = document.querySelector('.form__input--search').value;
+  var results = ideasArray.filter(function(idea){
+      return idea.title.toLowerCase().includes(searchText) || idea.body.toLowerCase().includes(searchText);
+  })
+  document.querySelector('main').innerText = '';
+  results.forEach(function(idea) {
+   generateIdeaCard(idea);
+  });
+}
