@@ -9,7 +9,6 @@ var paragraph = document.querySelector('.main__paragraph');
 var cardMain = document.querySelector('main');
 var upVote = document.querySelector('.article__section--upvote');
 var downVote = document.querySelector('.article__section--downvote');
-var count = -1;
 
 getCards();
 reDisplayCards();
@@ -77,7 +76,7 @@ function generateIdeaCard({id, title, body, star, quality}) {
 </section>
   <section class="article__section--footer">
     <img src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
-    <h3 class="article__section--h3">Quality: ${quality}</h3>
+    <h3 class="article__section--h3">Quality: ${qualityArray[quality]}</h3>
     <img src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
   </section>
 </article>`)
@@ -143,21 +142,21 @@ function toggleStarImg(e) {
 //   1.c Clicking downvote should decrease its quality one notch (“genius” → “plausible”, “plausible” → “swill”)
 //   1.d shouldnt be able to increase "genius" idea or decrease "swill" idea
 
-function incrementQuality(e, index) {
+function incrementQuality(e, index, quality) {
   var index = getId(e);
   var upvoteImg = e.target.closest('.article__section--upvote');
-  count++;
-  // console.log(count);
-  ideasArray[index].quality[count];
-  console.log(ideasArray[index].quality[count])
-
+  var newQualityInteger = ideasArray[index].quality++;
+console.log(newQualityInteger)
+  qualityArray[newQualityInteger];
+  ideasArray[index].saveToStorage(ideasArray);
+}
   // var upvoteActive = "idea-box-images/upvote-active.svg";
   // var upvoteInactive = "idea-box-images/upvote.svg";
   // for(i = 0; i < qualityArray.length; i++) {
   //   qualityArray[i];
   //   console.log(qualityArray[i])
 
-}
+
 
 // ****UPDATE QUALITY IN LOCAL STORAGE****
 // 2.if page is reloaded, edit should persist
