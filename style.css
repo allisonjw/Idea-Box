@@ -15,31 +15,32 @@ body {
     "aside header header header"
     "aside main main main"
     "aside main main main";
-    height: 100vh; 
+    height: 100vh;
 }
 
 /* ASIDE */
 aside {
   background-color: #1f1f32;
   grid-area: aside;
-  padding: 20px 15px 0px 15px;
 }
 
 h1 {
   color: white;
   font-weight: 700;
   font-size: 1.25em;
+  margin: 25px 0px 0px 15px;
 }
 
-h3 {
+.aside__h3 {
   color: #bfbfdd;
   font-size: 1em;
+  margin-left: 15px;
 }
 
 
 hr {
   border: 1px solid #353567;
-  margin: 30px 0px 30px 0px;
+  margin: 25px 0px 25px 0px;
   width: 100%;
 }
 
@@ -52,10 +53,31 @@ button {
   width: 100%;
 }
 
+button:disabled {
+  background-color: #d0d2d3;
+  border: 1px solid #8f8f8f;
+}
+
+.aside--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .aside__btn {
   background-color: #5356a4;
-  height: 5%;
+  height: 50px;
   margin-top: 30px;
+  width: 90%;
+  outline: none;
+}
+
+.aside__btn--qual {
+  background-color: #5356a4;
+  height: 50px;
+  margin-top: 30px;
+  width: 90%;
+  outline: none;
 }
 
 ul{
@@ -66,17 +88,19 @@ li {
   color: #ffffff;
   font-size: 1.25em;
   font-weight: 300;
-  padding: 10px;
+  padding: 15px;
 }
 
 li:hover {
   background-color:#d14119;
+  border-left: 8px solid #fa9c82;
 }
 
 .aside__input {
   height: 50px;
   margin-top: 10px;
-  width: 100%;
+  width: 90%;
+  outline: none;
 }
 
 /* HEADER */
@@ -105,17 +129,19 @@ input {
   border-radius: 2px;
   border: 2px solid #353567;
   font-size: 1em;
-  padding: 5px;
+  padding: 10px;
 }
 
 .form__input--title {
   height: 50px;
   margin-top: 10px;
+  outline: none;
 }
 
 .form__input--body {
   height: 80px;
   margin-top: 10px;
+  outline: none;
 }
 
 .form__btn {
@@ -145,6 +171,7 @@ input {
   height: 50px;
   padding: 10px;
   width: 100%;
+  outline: none;
 }
 
 /* MAIN */
@@ -161,7 +188,7 @@ main {
 img {
   height: 28px;
 }
-/* 
+/*
 .article__section--upvote {
   background: url(idea-box-images/upvote.svg) no-repeat;
   height: 28px;
@@ -177,7 +204,7 @@ img {
 }
 
 .article__section--downvote:hover {
-  background: url(idea-box-images/downvote-active.svg) no-repeat; 
+  background: url(idea-box-images/downvote-active.svg) no-repeat;
 } */
 
 article {

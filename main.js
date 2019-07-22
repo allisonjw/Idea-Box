@@ -10,6 +10,8 @@ var cardMain = document.querySelector('main');
 var search = document.querySelector('.form__input--search')
 var upVote = document.querySelector('.article__section--upvote');
 var downVote = document.querySelector('.article__section--downvote');
+var asideInput = document.querySelector('.aside__input');
+var asideBtn = document.querySelector('.aside__btn--qual');
 getCards();
 reDisplayCards();
 
@@ -24,6 +26,8 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
 search.addEventListener('keyup', filterSearch);
 saveBtn.addEventListener('click', enableSaveBtn);
+asideBtn.addEventListener('keyup', enableNewQualBtn);
+asideBtn.addEventListener('click', enableNewQualBtn);
 
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
@@ -40,6 +44,15 @@ function enableSaveBtn(e) {
     saveBtn.disabled = false;
   } else {
     saveBtn.disabled = true;
+  }
+}
+
+function enableNewQualBtn(e) {
+  e.preventDefault;
+  if (asideInput.value !== "") {
+    asideBtn.disabled = false;
+  } else {
+    asideBtn.disabled = true;
   }
 }
 
@@ -77,16 +90,16 @@ function generateIdeaCard({id, title, body, star, quality}) {
  `<article class="main__article--card" data-id=${id}>
    <section class="article__section--header">
      <img src="idea-box-images/${starImg}" class="article__section--star" alt="small star icon">
-     <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
+     <img onmouseover=src="idea-box-images/delete-active.svg" onmouseout=src="idea-box-images/delete.svg" src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
    </section>
    <section class="article__section--body">
      <h2 class="article__section--h2" contentEditable="true">${title}</h2>
      <p class="article__section--p" contentEditable="true">${body}</p>
    </section>
    <section class="article__section--footer">
-     <img src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
+     <img onmouseover=src="idea-box-images/upvote-active.svg" onmouseout=src="idea-box-images/upvote.svg" src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
      <h3 class="article__section--h3">Quality: ${qualityArray[quality]}</h3>
-     <img src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
+     <img onmouseover=src="idea-box-images/downvote-active.svg" onmouseout=src="idea-box-images/downvote.svg" src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
    </section>
   </article>`)
 ideaMessage();
