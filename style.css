@@ -116,11 +116,13 @@ input {
 .form__input--title {
   height: 50px;
   margin-top: 10px;
+  outline: none;
 }
 
 .form__input--body {
   height: 80px;
   margin-top: 10px;
+  outline: none;
 }
 
 .form__btn {
@@ -150,6 +152,7 @@ input {
   height: 50px;
   padding: 10px;
   width: 100%;
+  outline: none;
 }
 
 /* MAIN */
