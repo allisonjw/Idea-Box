@@ -199,9 +199,11 @@ article {
 }
 
 .article__section--body{
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding-bottom: 30px;
 }
 
 h2 {
