@@ -10,6 +10,8 @@ var cardMain = document.querySelector('main');
 var search = document.querySelector('.form__input--search')
 var upVote = document.querySelector('.article__section--upvote');
 var downVote = document.querySelector('.article__section--downvote');
+var asideInput = document.querySelector('.aside__input');
+var asideBtn = document.querySelector('.aside__btn--qual');
 getCards();
 reDisplayCards();
 
@@ -24,6 +26,8 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
 search.addEventListener('keyup', filterSearch);
 saveBtn.addEventListener('click', enableSaveBtn);
+asideBtn.addEventListener('keyup', enableNewQualBtn);
+asideBtn.addEventListener('click', enableNewQualBtn);
 
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
@@ -40,6 +44,15 @@ function enableSaveBtn(e) {
     saveBtn.disabled = false;
   } else {
     saveBtn.disabled = true;
+  }
+}
+
+function enableNewQualBtn(e) {
+  e.preventDefault;
+  if (asideInput.value !== "") {
+    asideBtn.disabled = false;
+  } else {
+    asideBtn.disabled = true;
   }
 }
 

@@ -69,6 +69,15 @@ button:disabled {
   height: 50px;
   margin-top: 30px;
   width: 90%;
+  outline: none;
+}
+
+.aside__btn--qual {
+  background-color: #5356a4;
+  height: 50px;
+  margin-top: 30px;
+  width: 90%;
+  outline: none;
 }
 
 ul{
@@ -120,7 +129,7 @@ input {
   border-radius: 2px;
   border: 2px solid #353567;
   font-size: 1em;
-  padding: 5px;
+  padding: 10px;
 }
 
 .form__input--title {
