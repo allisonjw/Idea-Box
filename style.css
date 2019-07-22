@@ -15,7 +15,7 @@ body {
     "aside header header header"
     "aside main main main"
     "aside main main main";
-    height: 100vh; 
+    height: 100vh;
 }
 
 /* ASIDE */
@@ -50,6 +50,11 @@ button {
   font-size: 1.25em;
   font-weight: 700;
   width: 100%;
+}
+
+button:disabled {
+  background-color: #d0d2d3;
+  border: 1px solid #8f8f8f;
 }
 
 .aside__btn {
@@ -111,11 +116,13 @@ input {
 .form__input--title {
   height: 50px;
   margin-top: 10px;
+  outline: none;
 }
 
 .form__input--body {
   height: 80px;
   margin-top: 10px;
+  outline: none;
 }
 
 .form__btn {
@@ -145,6 +152,7 @@ input {
   height: 50px;
   padding: 10px;
   width: 100%;
+  outline: none;
 }
 
 /* MAIN */
@@ -161,7 +169,7 @@ main {
 img {
   height: 28px;
 }
-/* 
+/*
 .article__section--upvote {
   background: url(idea-box-images/upvote.svg) no-repeat;
   height: 28px;
@@ -177,7 +185,7 @@ img {
 }
 
 .article__section--downvote:hover {
-  background: url(idea-box-images/downvote-active.svg) no-repeat; 
+  background: url(idea-box-images/downvote-active.svg) no-repeat;
 } */
 
 article {
@@ -230,7 +238,7 @@ p {
 }
 
 .article__section--h2 {
-  width: 180px; 
+  width: 180px;
 }
 
 .article__section--p {
