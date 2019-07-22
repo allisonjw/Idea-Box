@@ -1,49 +1,49 @@
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Idea Box</title>
- 	<link rel="stylesheet" type="text/css" href="normalize.css">
- 	<link rel="stylesheet" type="text/css" href="style.css">
- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
- 	<meta name="viewport" content="width=device-width, initial-scale=1">
- </head>
- <body>
- 	<aside>
- 		<h1>IdeaBox Redux</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Idea Box</title>
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+  <body>
+    <aside>
+ 	  <h1>IdeaBox Redux</h1>
+ 	  <hr>
+ 	  <h3>Filter Starred Ideas</h3>
+        <button type="button" class="aside__btn">Show Starred Ideas</button>
  		<hr>
- 		<h3>Filter Starred Ideas</h3>
- 		<button type="button" class="aside__btn">Show Starred Ideas</button>
- 		<hr>
- 		<h3>Filter by Quality</h3>
+ 	  <h3>Filter by Quality</h3>
  		<ul>
- 			<li>Swill</li>
- 			<li>Plausible</li>
- 			<li>Genius</li>
+ 		  <li>Swill</li>
+ 		  <li>Plausible</li>
+ 		  <li>Genius</li>
  		</ul>
- 		<h3>New Quality</h3>
+ 	  <h3>New Quality</h3>
  		<input type="text" class="aside__input">
  		<button type="button" class="aside__btn">Add New Quality</button>
  		<hr>
  	</aside>
  	<header>
- 		<form>
- 			<label>Title</label>
- 			<input type="text" maxlength="20" class="form__input--title">
- 			<label>Body</label>
- 			<input type="text" maxlength="80" class="form__input--body">
- 			<button type="submit" class="form__btn" disabled>Save</button>
+ 	  <form>
+ 	    <label>Title</label>
+ 		<input type="text" maxlength="20" class="form__input--title">
+ 		<label>Body</label>
+ 		<input type="text" maxlength="80" class="form__input--body">
+ 		<button type="submit" class="form__btn" disabled>Save</button>
       <div class="form__search--container">
         <div class="form__img--bkgd">
-     			<img src="idea-box-images/search.svg" class="form__img" alt="search magnify glass button">
+     	  <img src="idea-box-images/search.svg" class="form__img" alt="search magnify glass button">
         </div>
-   			<input type="text" class="form__input--search" placeholder="Search ideas">
+   		  <input type="text" class="form__input--search" placeholder="Search ideas">
       </div>
- 		</form>
+ 	  </form>
     </header>
- 		<main>
-			 <p class="main__paragraph">Have a great idea? Fill out title and body in the form above to see it!</p>
- 		</main>
- </body>
- <script type="text/javascript" src="idea.js"></script>
- <script type="text/javascript" src="main.js"></script>
- </html>
+ 	<main>
+	  <p class="main__paragraph">Have a great idea? Fill out title and body in the form above to see it!</p>
+    </main>
+  </body>
+<script type="text/javascript" src="idea.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</html>

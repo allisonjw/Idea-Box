@@ -17,7 +17,6 @@ class Idea {
 	}
 
 	updateIdea(type, text, ideasArray, index) {
-		console.log('this', this)
 		if(type === 'title'){
 			this.title = text;
 		}
@@ -29,7 +28,9 @@ class Idea {
 		this.saveToStorage(ideasArray);
 	}
 
-	updateQuality(){
-
+	updateQuality() {
+		this.quality = quality;
+		this.saveToStorage(quality);
 	}
+
 }

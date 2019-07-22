@@ -10,7 +10,6 @@ var cardMain = document.querySelector('main');
 var search = document.querySelector('.form__input--search')
 var upVote = document.querySelector('.article__section--upvote');
 var downVote = document.querySelector('.article__section--downvote');
-
 getCards();
 reDisplayCards();
 
@@ -24,6 +23,7 @@ titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
 search.addEventListener('keyup', filterSearch);
+saveBtn.addEventListener('click', enableSaveBtn);
 
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdea')) === null) {
@@ -50,11 +50,11 @@ function clearFormInputs() {
 
 function makeNewIdea(e) {
   e.preventDefault();
- var idea = new Idea(Date.now(), titleInput.value, bodyInput.value, false, 0);
- ideasArray.push(idea);
- idea.saveToStorage(ideasArray);
- generateIdeaCard(idea);
- clearFormInputs();
+  var idea = new Idea(Date.now(), titleInput.value, bodyInput.value, false, 0);
+  ideasArray.push(idea);
+  idea.saveToStorage(ideasArray);
+  generateIdeaCard(idea);
+  clearFormInputs();
 }
 
 function reDisplayCards() {
@@ -63,25 +63,33 @@ function reDisplayCards() {
   }
 }
 
+function ideaMessage() {
+  if (ideasArray.length === 0) {
+    paragraph.classList.remove('hidden');
+  } else if (ideasArray.length !== 0) {
+    paragraph.classList.add('hidden');
+  }
+}
+
 function generateIdeaCard({id, title, body, star, quality}) {
- paragraph.hidden = true;
- var starImg = star ? "star-active.svg" : "star.svg";
- cardMain.insertAdjacentHTML ('afterbegin',
+  var starImg = star ? "star-active.svg" : "star.svg";
+  cardMain.insertAdjacentHTML ('afterbegin',
  `<article class="main__article--card" data-id=${id}>
-  <section class="article__section--header">
-    <img src="idea-box-images/${starImg}" class="article__section--star" alt="small star icon">
-    <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
-  </section>
-<section class="article__section--body">
-    <h2 class="article__section--h2" contentEditable="true">${title}</h2>
-    <p class="article__section--p" contentEditable="true">${body}</p>
-</section>
-  <section class="article__section--footer">
-    <img src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
-    <h3 class="article__section--h3">Quality: ${qualityArray[quality]}</h3>
-    <img src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
-  </section>
-</article>`)
+   <section class="article__section--header">
+     <img src="idea-box-images/${starImg}" class="article__section--star" alt="small star icon">
+     <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
+   </section>
+   <section class="article__section--body">
+     <h2 class="article__section--h2" contentEditable="true">${title}</h2>
+     <p class="article__section--p" contentEditable="true">${body}</p>
+   </section>
+   <section class="article__section--footer">
+     <img src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
+     <h3 class="article__section--h3">Quality: ${qualityArray[quality]}</h3>
+     <img src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
+   </section>
+  </article>`)
+ideaMessage();
 };
 
 function getId(e) {
@@ -98,6 +106,7 @@ if (e.target.classList[0] === "article__delete") {
 function deleteCard(e, index) {
   e.target.closest('article').remove();
   ideasArray[index].deleteFromStorage(index);
+  ideaMessage();
 };
 
 function updateIdeaInputs(e) {
@@ -134,17 +143,12 @@ function toggleStarImg(e) {
     ideasArray[index].saveToStorage(ideasArray);
   }
 }
-		        // *******PHASE TWO*******
-
-// ****BUTTON FUNTIONALITY TO DO****
 
 function incrementQuality(e, index, quality) {
   var index = getId(e);
   var upVote = e.target.closest('.article__section--upvote');
   if(e.target === upVote) {
-    console.log('hello1')
     if(ideasArray[index].quality < qualityArray.length - 1) {
-      console.log('hello2')
     ideasArray[index].quality++;
     ideasArray[index].saveToStorage(ideasArray);
     updateQuality(e, ideasArray[index].quality);
