@@ -169,18 +169,10 @@ function decrementQuality(e, index, quality) {
 }
 
 function updateQuality(e, quality) {
-  console.log(quality)
     if(e.target) {
     e.target.parentNode.children[1].innerText = `Quality: ${qualityArray[quality]}`
   }
 }
-  // var upvoteActive = "idea-box-images/upvote-active.svg";
-  // var upvoteInactive = "idea-box-images/upvote.svg";
-
-// ****UPDATE QUALITY IN LOCAL STORAGE****
-// 2.if page is reloaded, edit should persist
-//   2.a update of idea.js should be in updateQuality method
-//   2.b DOM gets updated in main.js file (where you can still leverage your idea instance)
 
 function filterSearch() {
   var searchText = document.querySelector('.form__input--search').value;

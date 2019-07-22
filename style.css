@@ -232,13 +232,18 @@ p {
 }
 
 .article__section--h2 {
-  width: 180px; 
+  max-height: 38px;
+  outline: none;
+  overflow: scroll;
+  width: 11em;
 }
 
 .article__section--p {
-  height: 170px;
+  height: 139px;
+  outline: none;
   overflow: scroll;
-  width: 180px;
+  width: 11em;
+
 }
 
 .article__section--h3{
