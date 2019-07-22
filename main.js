@@ -77,7 +77,7 @@ function generateIdeaCard({id, title, body, star, quality}) {
  `<article class="main__article--card" data-id=${id}>
    <section class="article__section--header">
      <img src="idea-box-images/${starImg}" class="article__section--star" alt="small star icon">
-     <img src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
+     <img onmouseover=src="idea-box-images/delete-active.svg" onmouseout=src="idea-box-images/delete.svg" src="idea-box-images/delete.svg" class="article__delete" alt="X delete button">
    </section>
    <section class="article__section--body">
      <h2 class="article__section--h2" contentEditable="true">${title}</h2>
