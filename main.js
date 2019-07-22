@@ -84,9 +84,9 @@ function generateIdeaCard({id, title, body, star, quality}) {
      <p class="article__section--p" contentEditable="true">${body}</p>
    </section>
    <section class="article__section--footer">
-     <img src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
+     <img onmouseover=src="idea-box-images/upvote-active.svg" onmouseout=src="idea-box-images/upvote.svg" src="idea-box-images/upvote.svg" class="article__section--upvote" alt="round upvote icon">
      <h3 class="article__section--h3">Quality: ${qualityArray[quality]}</h3>
-     <img src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
+     <img onmouseover=src="idea-box-images/downvote-active.svg" onmouseout=src="idea-box-images/downvote.svg" src="idea-box-images/downvote.svg" class="article__section--downvote" alt="round downvote icon">
    </section>
   </article>`)
 ideaMessage();
