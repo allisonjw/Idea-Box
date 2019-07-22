@@ -8,8 +8,8 @@
 body {
   display: grid;
   font-family: 'Open Sans', sans-serif;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr 2fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 40% 10% auto auto;;
   grid-template-areas:
     "aside header header header"
     "aside header header header"
@@ -226,9 +226,11 @@ article {
 }
 
 .article__section--body{
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding-bottom: 30px;
 }
 
 h2 {
@@ -257,13 +259,18 @@ p {
 }
 
 .article__section--h2 {
-  width: 180px;
+  max-height: 38px;
+  outline: none;
+  overflow: scroll;
+  width: 11em;
 }
 
 .article__section--p {
-  height: 170px;
+  height: 139px;
+  outline: none;
   overflow: scroll;
-  width: 180px;
+  width: 11em;
+
 }
 
 .article__section--h3{
