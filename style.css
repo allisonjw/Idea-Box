@@ -22,24 +22,25 @@ body {
 aside {
   background-color: #1f1f32;
   grid-area: aside;
-  padding: 20px 15px 0px 15px;
 }
 
 h1 {
   color: white;
   font-weight: 700;
   font-size: 1.25em;
+  margin: 25px 0px 0px 15px;
 }
 
-h3 {
+.aside__h3 {
   color: #bfbfdd;
   font-size: 1em;
+  margin-left: 15px;
 }
 
 
 hr {
   border: 1px solid #353567;
-  margin: 30px 0px 30px 0px;
+  margin: 25px 0px 25px 0px;
   width: 100%;
 }
 
@@ -57,10 +58,17 @@ button:disabled {
   border: 1px solid #8f8f8f;
 }
 
+.aside--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .aside__btn {
   background-color: #5356a4;
-  height: 7%;
+  height: 50px;
   margin-top: 30px;
+  width: 90%;
 }
 
 ul{
@@ -71,17 +79,19 @@ li {
   color: #ffffff;
   font-size: 1.25em;
   font-weight: 300;
-  padding: 10px;
+  padding: 15px;
 }
 
 li:hover {
   background-color:#d14119;
+  border-left: 8px solid #fa9c82;
 }
 
 .aside__input {
   height: 50px;
   margin-top: 10px;
-  width: 100%;
+  width: 90%;
+  outline: none;
 }
 
 /* HEADER */
