@@ -280,7 +280,6 @@ p {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 10% 30% 30% auto auto;
     grid-template-areas:
-      /* "aside aside" */
       "aside aside"
       "header header"
       "header header"
@@ -302,8 +301,13 @@ p {
     margin: 0px 0px -8px 15px;
   }
 
-  .aside__hamburger--container {
-    display: none;
+  #aside__hamburger--container {
+    background-color: #1f1f32;
+    position: absolute;
+  }
+
+  .toggleMenu {
+    visibility: hidden;
     position: absolute;
   }
 
