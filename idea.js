@@ -8,7 +8,7 @@ class Idea {
 	}
 
 	saveToStorage(ideasArray) {
-	  localStorage.setItem('theIdea', JSON.stringify(ideasArray));
+	  localStorage.setItem('theIdeas', JSON.stringify(ideasArray));
 	}
 
 	deleteFromStorage(index) {
@@ -17,20 +17,24 @@ class Idea {
 	}
 
 	updateIdea(type, text, ideasArray, index) {
-		if(type === 'title'){
+		if (type === 'title') {
 			this.title = text;
 		}
-		if(type === 'body'){
+		if (type === 'body') {
 			this.body = text;
 		}
-		console.log('new this', this)
 		ideasArray.splice(index, 1, this);
 		this.saveToStorage(ideasArray);
 	}
 
-	updateQuality() {
-		this.quality = quality;
-		this.saveToStorage(quality);
+	updateStar(ideasArray) {
+		this.star = this.star;
+		this.saveToStorage(ideasArray);
+	}
+
+	updateQuality(ideasArray) {
+		this.quality = this.quality;
+		this.saveToStorage(ideasArray);
 	}
 
 }
