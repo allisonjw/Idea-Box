@@ -12,29 +12,29 @@ class Idea {
 	}
 
 	deleteFromStorage(index) {
-		ideasArray.splice(index, 1);
-		this.saveToStorage(ideasArray)
+      ideasArray.splice(index, 1);
+	  this.saveToStorage(ideasArray)
 	}
 
 	updateIdea(type, text, ideasArray, index) {
-		if (type === 'title') {
-			this.title = text;
-		}
-		if (type === 'body') {
-			this.body = text;
-		}
-		ideasArray.splice(index, 1, this);
-		this.saveToStorage(ideasArray);
+	  if (type === 'title') {
+		this.title = text;
+	}
+	  if (type === 'body') {
+		this.body = text;
+	}
+	  ideasArray.splice(index, 1, this);
+	  this.saveToStorage(ideasArray);
 	}
 
 	updateStar(ideasArray) {
-		this.star = this.star;
-		this.saveToStorage(ideasArray);
+	  this.star = this.star;
+	  this.saveToStorage(ideasArray);
 	}
 
 	updateQuality(ideasArray) {
-		this.quality = this.quality;
-		this.saveToStorage(ideasArray);
+	  this.quality = this.quality;
+	  this.saveToStorage(ideasArray);
 	}
 
 }

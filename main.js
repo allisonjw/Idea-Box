@@ -16,7 +16,6 @@ getCards();
 reDisplayCards();
 
 cardMain.addEventListener('click', cardHandler);
-cardMain.addEventListener('click', getId);
 cardMain.addEventListener('keydown', handleEnter);
 cardMain.addEventListener('focusout', updateIdeaInputs);
 titleInput.addEventListener('keyup', enableSaveBtn);
@@ -37,6 +36,7 @@ function getCards() {
 }
 
 function cardHandler(e) {
+  getId(e);
   if (e.target.closest('.article__section--star')) {
     toggleStarImg(e);
   }
