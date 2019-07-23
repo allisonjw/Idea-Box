@@ -17,12 +17,9 @@ var hamburgerButton = document.querySelector('.aside__hamburger--menu');
 getCards();
 reDisplayCards();
 
-cardMain.addEventListener('click', getId);
+cardMain.addEventListener('click', cardHandler);
 cardMain.addEventListener('keydown', handleEnter);
-cardMain.addEventListener('click', toggleStarImg);
 cardMain.addEventListener('focusout', updateIdeaInputs);
-cardMain.addEventListener('click', incrementQuality);
-cardMain.addEventListener('click', decrementQuality);
 titleInput.addEventListener('keyup', enableSaveBtn);
 bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', makeNewIdea);
@@ -43,11 +40,21 @@ function toggleMenu(e) {
   // }
 
 function getCards() {
-  if (JSON.parse(localStorage.getItem('theIdea')) === null) {
+  if (JSON.parse(localStorage.getItem('theIdeas')) === null) {
   } else {
-  ideasArray = JSON.parse(localStorage.getItem('theIdea')).map(function({id, title, body, star, quality}) {
+  ideasArray = JSON.parse(localStorage.getItem('theIdeas')).map(function({id, title, body, star, quality}) {
     return new Idea(id, title, body, star, quality);
     });
+  }
+}
+
+function cardHandler(e) {
+  getId(e);
+  if (e.target.closest('.article__section--star')) {
+    toggleStarImg(e);
+  }
+  if (e.target.closest('.article__section--downvote') || e.target.closest('.article__section--upvote')) {
+    changeQuality(e);
   }
 }
 
@@ -133,7 +140,7 @@ function deleteCard(e, index) {
   e.target.closest('article').remove();
   ideasArray[index].deleteFromStorage(index);
   ideaMessage();
-};
+}
 
 function updateIdeaInputs(e) {
   var index = getId(e);
@@ -162,42 +169,30 @@ function toggleStarImg(e) {
   if (ideasArray[index].star === false) {
     starImg.src = active;
     ideasArray[index].star = true;
-    ideasArray[index].saveToStorage(ideasArray);
+    ideasArray[index].updateStar(ideasArray);
   } else {
     starImg.src = inactive;
     ideasArray[index].star = false;
-    ideasArray[index].saveToStorage(ideasArray);
+    ideasArray[index].updateStar(ideasArray);
   }
 }
 
-function incrementQuality(e, index, quality) {
+function changeQuality(e) {
   var index = getId(e);
   var upVote = e.target.closest('.article__section--upvote');
-  if(e.target === upVote) {
-    if(ideasArray[index].quality < qualityArray.length - 1) {
+  var downvote = e.target.closest('.article__section--downvote');
+  if (e.target === upVote && ideasArray[index].quality < qualityArray.length - 1) {
     ideasArray[index].quality++;
-    ideasArray[index].saveToStorage(ideasArray);
-    updateQuality(e, ideasArray[index].quality);
-    }
-  }
-}
-
-function decrementQuality(e, index, quality) {
-  var index = getId(e);
-  var downVote = e.target.closest('.article__section--downvote');
-  if(e.target === downVote) {
-    if(ideasArray[index].quality >= 1) {
+  } 
+  if (e.target === downvote && ideasArray[index].quality >= 1) {
     ideasArray[index].quality--;
-    ideasArray[index].saveToStorage(ideasArray);
-    updateQuality(e, ideasArray[index].quality);
-    }
   }
+    ideasArray[index].updateQuality(ideasArray);
+    qualityText(e, ideasArray[index].quality);
 }
 
-function updateQuality(e, quality) {
-    if(e.target) {
+function qualityText(e, quality) {
     e.target.parentNode.children[1].innerText = `Quality: ${qualityArray[quality]}`
-  }
 }
 
 function filterSearch() {
