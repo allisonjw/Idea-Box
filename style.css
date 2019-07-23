@@ -24,6 +24,10 @@ aside {
   grid-area: aside;
 }
 
+.aside__hamburger--menu {
+  display: none;
+}
+
 h1 {
   color: white;
   font-weight: 700;
@@ -51,6 +55,7 @@ button {
   font-size: 1.25em;
   font-weight: 700;
   width: 100%;
+  /* cursor: pointer; */
 }
 
 button:disabled {
@@ -188,24 +193,6 @@ main {
 img {
   height: 28px;
 }
-/*
-.article__section--upvote {
-  background: url(idea-box-images/upvote.svg) no-repeat;
-  height: 28px;
-}
-
-.article__section--upvote:hover {
-  background: url(idea-box-images/upvote-active.svg) no-repeat;
-}
-
-.article__section--downvote {
-  background: url(idea-box-images/downvote.svg) no-repeat;
-  height: 28px;
-}
-
-.article__section--downvote:hover {
-  background: url(idea-box-images/downvote-active.svg) no-repeat;
-} */
 
 article {
   border-radius: 2px;
@@ -237,6 +224,7 @@ h2 {
   font-weight: 700;
   font-size: 1.25em;
   margin: 20px 15px 20px 15px;
+  color: #1f1f32;
 }
 
 p {
@@ -284,4 +272,71 @@ p {
   flex-direction: row;
   height: 35px;
   justify-content: space-between;
+}
+
+
+@media screen and (max-width: 600px) {
+  body {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10% 30% 30% auto auto;
+    grid-template-areas:
+      "aside aside"
+      "header header"
+      "header header"
+      "main main"
+      "main main";
+  }
+
+  h1 {
+    color: white;
+    font-weight: 700;
+    font-size: 1.25em;
+    margin: 25px 0px 0px 40px;
+    display: inline-block;
+  }
+
+  .aside__hamburger--menu {
+    display: inline-block;
+    height: 35px;
+    margin: 0px 0px -8px 15px;
+  }
+
+  #aside__hamburger--container {
+    background-color: #1f1f32;
+    position: absolute;
+  }
+
+  .toggleMenu {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .main__paragraph {
+    font-size: 2em;
+    margin-top: -1%;
+  }
+
+  article {
+    border-radius: 2px;
+    border: 2px solid #353567;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .article__section--p {
+    height: 49px;
+    outline: none;
+    overflow: scroll;
+    width: 11em;
+  }
+
+  form {
+    width: 90%;
+  }
 }
