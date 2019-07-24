@@ -381,6 +381,11 @@ p {
     grid-template-rows: 1fr;
   }
 
+  .opacity {
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0.2;
+  }
+
   .main__paragraph {
     font-size: 1.75em;
     margin-top: -1%;

@@ -38,8 +38,10 @@ function toggleImage(id,primary,secondary) {
     src=document.getElementById(id).src;
     if (src.match(primary)) {
       document.getElementById(id).src=secondary;
+      cardMain.classList.add('opacity');
     } else {
       document.getElementById(id).src=primary;
+      cardMain.classList.remove('opacity');
     }
   }
 
