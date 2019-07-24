@@ -260,6 +260,7 @@ p {
   max-height: 38px;
   outline: none;
   overflow: scroll;
+  padding-bottom: 2px;
   width: 11em;
 }
 
@@ -315,6 +316,11 @@ p {
 
   .article__section--h3 {
     margin: 0px 15px 0px 15px;
+  }
+
+  .article__section--h2,
+  .article__section--p {
+    width: 15em;
   }
 
   .aside__btn {
@@ -378,7 +384,8 @@ p {
 /* MAIN */
   main {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    height: 100vh;
   }
 
   .opacity {
@@ -401,6 +408,7 @@ p {
     justify-content: space-between;
   }
 
+  .article__section--h2,
   .article__section--p {
     height: 49px;
     outline: none;
