@@ -30,7 +30,6 @@ asideBtn.addEventListener('click', enableNewQualBtn);
 hamburgerButton.addEventListener('click', toggleMenu);
 
 function toggleMenu(e) {
-  console.log(e);
   document.querySelector('#aside__hamburger--container').classList.toggle('toggleMenu');
 }
 
@@ -198,7 +197,7 @@ function changeQuality(e) {
 }
 
 function qualityText(e, quality) {
-    e.target.parentNode.children[1].innerText = `Quality: ${qualityArray[quality]}`
+  e.target.parentNode.children[1].innerText = `Quality: ${qualityArray[quality]}`
 }
 
 function filterSearch() {
