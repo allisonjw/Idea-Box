@@ -9,15 +9,15 @@
 </head>
   <body>
     <aside>
-    <img src="idea-box-images/menu.svg" class="aside__hamburger--menu">
+    <img id="hamSwap" onclick="toggleImage('hamSwap', 'idea-box-images/menu.svg', 'idea-box-images/menu-close.svg')" src="idea-box-images/menu.svg" class="aside__hamburger--menu">
  	  <h1>IdeaBox Redux</h1>
     <section id="aside__hamburger--container" class="toggleMenu">
-      <hr>
+      <hr class = aside__hr--1>
    	  <h3 class="aside__h3">Filter Starred Ideas</h3>
         <div class="aside--container">
           <button type="button" class="aside__btn">Show Starred Ideas</button>
         </div>
-   		<hr>
+   		<hr class = aside__hr--2>
    	  <h3 class="aside__h3">Filter by Quality</h3>
    		<ul>
    		  <li>Swill</li>
@@ -31,7 +31,7 @@
         <div class="aside--container">
        		<button type="submit" class="aside__btn--qual" disabled>Add New Quality</button>
         </div>
- 		<hr>
+ 		<hr class = aside__hr--3>
   </section>
  	</aside>
  	<header>

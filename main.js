@@ -13,7 +13,7 @@ var downVote = document.querySelector('.article__section--downvote');
 var asideInput = document.querySelector('.aside__input');
 var asideBtn = document.querySelector('.aside__btn--qual');
 var hamburgerButton = document.querySelector('.aside__hamburger--menu');
-// var hamburgerContainer = document.querySelector('#aside__hamburger--container');
+
 getCards();
 reDisplayCards();
 
@@ -33,11 +33,15 @@ function toggleMenu(e) {
   console.log(e);
   document.querySelector('#aside__hamburger--container').classList.toggle('toggleMenu');
 }
-  // if(hamburgerButton === true) {
-  //   hamburgerContainer.classList.add('hidden')
-  // } else {
-  //   hamburgerContainer.classList.remove('hidden')
-  // }
+
+function toggleImage(id,primary,secondary) {
+    src=document.getElementById(id).src;
+    if (src.match(primary)) {
+      document.getElementById(id).src=secondary;
+    } else {
+      document.getElementById(id).src=primary;
+    }
+  }
 
 function getCards() {
   if (JSON.parse(localStorage.getItem('theIdeas')) === null) {
@@ -183,7 +187,7 @@ function changeQuality(e) {
   var downvote = e.target.closest('.article__section--downvote');
   if (e.target === upVote && ideasArray[index].quality < qualityArray.length - 1) {
     ideasArray[index].quality++;
-  } 
+  }
   if (e.target === downvote && ideasArray[index].quality >= 1) {
     ideasArray[index].quality--;
   }
