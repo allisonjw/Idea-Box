@@ -385,7 +385,7 @@ p {
   main {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
-    height: 100vh;
+    height: 50em;
   }
 
   .opacity {
